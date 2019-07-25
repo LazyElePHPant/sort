@@ -22,4 +22,18 @@ class Sort
 
 	return array_merge($this->quick($left), [$pivot], $this->quick($right));
     }
+
+    public function insertion(array $numbers) : array
+    {
+	for ($i = 1; $i < count($numbers); $i++) {
+	    for ($j = 0; $j < $i; $j++) {
+		if ($numbers[$i] < $numbers[$j]) {
+		    $spliced = array_splice($numbers, $i, 1);
+		    array_splice($numbers, $j, 0, $spliced[0]);
+		}
+	    }
+	}
+
+	return $numbers;
+    }
 }
