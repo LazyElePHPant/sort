@@ -46,6 +46,22 @@ class Sort
 	return $numbers;
     }
 
+    public function shell(array $numbers) : array
+    {
+	for ($gap = round(count($numbers) / 2); $gap > 0; ($gap = $gap / 2)) {
+	    for ($i = $gap; $i < count($numbers); $i++) {
+		for ($j = $i - $gap; $j >= 0; $j -= $gap) {
+		    if ($numbers[$j + $gap] >= $numbers[$j]) {
+			break;
+		    }
+
+		    $this->swap($numbers, $j+$gap, $j);		    
+		}
+	    }
+	}
+	return $numbers;
+    }
+
     private function swap(array &$numbers, int $low, int $high)
     {
 	$temp = $numbers[$low];
